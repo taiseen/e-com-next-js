@@ -17,7 +17,7 @@ const Menu = ({ showCatMenu, setShowCatMenu, categories, mobileMenu, setMobileMe
                 (
                     <Fragment key={item.id}>
                         {
-                            !!item?.subMenu
+                            !!item?.subMenu // !!undefined false
                                 ? (
                                     <li
                                         className="cursor-pointer flex items-center gap-2 relative"

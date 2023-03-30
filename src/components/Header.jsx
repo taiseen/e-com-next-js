@@ -1,27 +1,41 @@
+import { VscChromeClose } from "react-icons/vsc";
+import { BiMenuAltRight } from "react-icons/bi";
+import { IoMdHeartEmpty } from "react-icons/io";
 import { useState, useEffect } from "react";
+import { BsCart } from "react-icons/bs";
+import MenuMobile from "./MenuMobile";
 import Wrapper from "./Wrapper";
 import Link from "next/link";
 import Menu from "./Menu";
-// import MenuMobile from "./MenuMobile";
-
-import { IoMdHeartEmpty } from "react-icons/io";
-import { BsCart } from "react-icons/bs";
-import { BiMenuAltRight } from "react-icons/bi";
-import { VscChromeClose } from "react-icons/vsc";
 // import { fetchDataFromApi } from "@/utils/api";
 // import { useSelector } from "react-redux";
 
+
 const Header = () => {
-  const [mobileMenu, setMobileMenu] = useState(false);
-  const [showCatMenu, setShowCatMenu] = useState(false);
+
   const [show, setShow] = useState("translate-y-0");
   const [lastScrollY, setLastScrollY] = useState(0);
   const [categories, setCategories] = useState(null);
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const [showCatMenu, setShowCatMenu] = useState(false);
 
   // const { cartItems } = useSelector((state) => state.cart);
 
+  const width = 764;
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const media = window.matchMedia(`(max-width:${width}px)`);
+
+      // console.log(media);
+      // if (media.matches) {
+      //   setTargetReached(true);
+      // }
+
+    }
+  }, []);
 
   useEffect(() => {
+
     const controlNavbar = () => {
       window.scrollY > 200
         ? (window.scrollY > lastScrollY && !mobileMenu)
@@ -59,14 +73,14 @@ const Header = () => {
           setMobileMenu={setMobileMenu}
         />
 
-        {/* {mobileMenu && (
+        {mobileMenu && (
           <MenuMobile
             showCatMenu={showCatMenu}
             setShowCatMenu={setShowCatMenu}
             setMobileMenu={setMobileMenu}
             categories={categories}
           />
-        )} */}
+        )}
 
         <div className="flex items-center gap-2 text-black">
           {/* Icon start */}
